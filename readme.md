@@ -361,6 +361,17 @@
     // ...
     ```
 
+<br/>
+
+### [Redux-Toolkit](https://redux-toolkit.js.org/)
+1. 
+  ```sh
+  npm i -S react-redux @reduxjs/toolkit
+  npm i -D @types/react-redux
+  ```
+2. either use `next-redux-wrapper` package (`npm i -P next-redux-wrapper`) or copy the `withRedux.tsx` from the example setup `src/utils/redux`
+3. create custom `makeStore` function, `_app.tsx` page and other redux setup as examples in `next-redux-wrapper` repo shows
+
 ## Deprecated
 **Go to different branches for different Project Setup**
 - `pwa-amp` -- with Amp, Redux-Saga, Emotion
