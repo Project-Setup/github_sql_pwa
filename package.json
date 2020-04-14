@@ -1,7 +1,7 @@
 {
-  "name": "nextjs_redux",
+  "name": "nextjs_redux_toolkit",
   "version": "1.0.0",
-  "description": "Example Project Setup with NextJs, Redux, Typescript, Eslint, Jest and Emotion.",
+  "description": "Example Project Setup with NextJs, Redux-Toolkit, Typescript, Eslint, Jest and Emotion.",
   "main": "index.js",
   "scripts": {
     "dev": "next",
@@ -15,15 +15,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Project-Setup/Nextjs_Ts_Eslint.git"
+    "url": "git+https://github.com/Project-Setup/nextjs_redux_toolkit.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Project-Setup/Nextjs_Ts_Eslint/issues"
+    "url": "https://github.com/Project-Setup/nextjs_redux_toolkit/issues"
   },
-  "homepage": "https://github.com/Project-Setup/Nextjs_Ts_Eslint#readme",
+  "homepage": "https://github.com/Project-Setup/nextjs_redux_toolkit#readme",
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@reduxjs/toolkit": "^1.3.4",

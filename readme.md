@@ -1,8 +1,10 @@
-# Example Project Setup with NextJs, Typescript, Eslint, Jest and Emotion.
+# Example Project Setup with NextJs, Redux-Toolkit, Typescript, Eslint, Jest and Emotion.
 
 ## Versions
 * NextJs v9.3.4
+* Redux-Toolkit v1.3.4
 * Emotion v10
+* Typescript v3.8.3
 
 ## Usage of this example setup
 
@@ -11,8 +13,8 @@
     nvm use
     npm install
     ```
-1. remove unwanted files in `public/`, `src/utils`, `src/__tests/`, `src/components`, `src/redux`, and `src/pages`
-2. modify `config/`
+1. remove unwanted files in `public/`, `src/`
+2. modify `configs/` and add `.env/`
 3. preview dev progress on `http://localhost:3000/`
     ```sh
     npm run dev
