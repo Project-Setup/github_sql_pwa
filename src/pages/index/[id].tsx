@@ -2,6 +2,7 @@ import React from 'react';
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import { useRouter } from 'next/router';
 import CountDiv from '../../features/count/CountDiv';
+import Link from '../../features/link/Link';
 
 export interface Props {
   id?: string;
@@ -15,6 +16,9 @@ const IndexPage: NextPage<Props> = ({ id, ...appProps }) => {
       <p>{`Props from _app.tsx: ${JSON.stringify(appProps)}`}</p>
       <p>{`Page Process Env: ${process.env.TEST_PAGE_VAR}`}</p>
       <CountDiv />
+      <Link href="/">
+        <a>index</a>
+      </Link>
     </div>
   );
 };
