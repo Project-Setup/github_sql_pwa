@@ -363,7 +363,6 @@
     ```json
     {
       "scripts": {
-        // ...
         "export": "NODE_ENV=production npm run build && next export -o docs && touch docs/.nojekyll"
       }
     }
