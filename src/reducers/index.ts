@@ -1,8 +1,7 @@
-import { combineReducers } from '@reduxjs/toolkit';
 import count from '../features/count/countSlice';
 
-const rootReducer = combineReducers({
+const commonReducer = {
   count,
-});
+};
 
-export default rootReducer;
+export default commonReducer;
