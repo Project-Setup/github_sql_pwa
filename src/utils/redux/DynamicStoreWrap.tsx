@@ -2,9 +2,11 @@ import React, { PropsWithChildren, FC, useState, useEffect } from 'react';
 import { ReactReduxContext } from 'react-redux';
 import { ReducerEnhancedStore } from './configureStore';
 
+export type CallbackOnStore = (store: ReducerEnhancedStore) => Promise<void>;
+
 type DynamicStoreWrapProps = PropsWithChildren<{
-  callbackOnMount?: (store: ReducerEnhancedStore) => Promise<void>;
-  callbackOnUnmount?: (store: ReducerEnhancedStore) => Promise<void>;
+  callbackOnMount?: CallbackOnStore;
+  callbackOnUnmount?: CallbackOnStore;
 }>;
 
 interface DynamicStoreProps extends DynamicStoreWrapProps {
@@ -24,13 +26,11 @@ const DynamicStore: FC<DynamicStoreProps> = ({
       if (callbackOnMount) {
         await callbackOnMount(store);
       }
-
       setReadyToRender(true);
     };
 
     const asyncEnd = async () => {
       setReadyToRender(false);
-
       if (callbackOnUnmount) {
         callbackOnUnmount(store);
       }
@@ -41,17 +41,19 @@ const DynamicStore: FC<DynamicStoreProps> = ({
     return () => {
       asyncEnd();
     };
-  });
+  }, []);
 
-  return readyToRender && children ? <>{children}</> : null;
+  return readyToRender ? <>{children}</> : null;
 };
 
 const DynamicStoreWrap: FC<DynamicStoreWrapProps> = (props) => (
   <ReactReduxContext.Consumer>
-    {({ store }: { store: unknown }) => (
-      // eslint-disable-next-line react/jsx-props-no-spreading
-      <DynamicStore {...props} store={store as ReducerEnhancedStore} />
-    )}
+    {({ store }: { store: unknown }) => {
+      return (
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        <DynamicStore {...props} store={store as ReducerEnhancedStore} />
+      );
+    }}
   </ReactReduxContext.Consumer>
 );
 

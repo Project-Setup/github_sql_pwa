@@ -1,7 +1,7 @@
 import React from 'react';
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import { useRouter } from 'next/router';
-import CountDiv from '../../features/count/CountDiv';
+import TextDiv from '../../features/text/TextDiv';
 import Link from '../../features/link/Link';
 
 export interface Props {
@@ -15,7 +15,7 @@ const IndexPage: NextPage<Props> = ({ id, ...appProps }) => {
       <p>{`Param: ${router?.isFallback ? 'Hold on' : id}`}</p>
       <p>{`Props from _app.tsx: ${JSON.stringify(appProps)}`}</p>
       <p>{`Page Process Env: ${process.env.TEST_PAGE_VAR}`}</p>
-      <CountDiv />
+      <TextDiv />
       <Link href="/">
         <a>index</a>
       </Link>

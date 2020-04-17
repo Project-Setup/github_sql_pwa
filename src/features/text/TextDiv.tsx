@@ -1,16 +1,16 @@
 import React, { FC, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { css } from '@emotion/core';
-import { incrementFirst, incrementSecond } from './countSlice';
+import { updateFirst, updateSecond } from './textSlice';
 import { AppDispatch } from '../../stores';
-import { selectFirstCount, selectSecondCount } from './countSelectors';
+import { selectFirstText, selectSecondText } from './textSelectors';
 import rem from '../../utils/style/rem';
 import DynamicStoreWrap, {
   CallbackOnStore,
 } from '../../utils/redux/DynamicStoreWrap';
-import { reducerCombo1 } from '../../reducers/reducerCombo';
+import { reducerCombo2 } from '../../reducers/reducerCombo';
 
-const numDivStyles = css`
+const strDivStyles = css`
   display: flex;
   align-items: center;
   margin: ${rem(5)};
@@ -24,58 +24,58 @@ const numDivStyles = css`
   }
 `;
 
-const CountDiv: FC = () => {
-  const [add1, changeAdd1] = useState(0);
-  const [add2, changeAdd2] = useState(0);
+const TextDiv: FC = () => {
+  const [input1, changeInput1] = useState('');
+  const [input2, changeInput2] = useState('');
   const dispatch = useDispatch<AppDispatch>();
-  const num1 = useSelector(selectFirstCount);
-  const num2 = useSelector(selectSecondCount);
+  const text1 = useSelector(selectFirstText);
+  const text2 = useSelector(selectSecondText);
 
   return (
     <div>
-      <div css={numDivStyles}>
+      <div css={strDivStyles}>
         <input
-          type="number"
+          type="text"
           onChange={(e) => {
-            changeAdd1(parseInt(e.target.value, 10));
+            changeInput1(e.target.value);
           }}
-          value={add1}
+          value={input1}
         />
-        <button type="button" onClick={() => dispatch(incrementFirst(add1))}>
-          add first number
+        <button type="button" onClick={() => dispatch(updateFirst(input1))}>
+          change first text
         </button>
-        <p>{num1}</p>
+        <p>{text1}</p>
       </div>
-      <div css={numDivStyles}>
+      <div css={strDivStyles}>
         <input
-          type="number"
+          type="text"
           onChange={(e) => {
-            changeAdd2(parseInt(e.target.value, 10));
+            changeInput2(e.target.value);
           }}
-          value={add2}
+          value={input2}
         />
-        <button type="button" onClick={() => dispatch(incrementSecond(add2))}>
-          add second number
+        <button type="button" onClick={() => dispatch(updateSecond(input2))}>
+          change second text
         </button>
-        <p>{num2}</p>
+        <p>{text2}</p>
       </div>
     </div>
   );
 };
 
 const callbackOnMount: CallbackOnStore = async (store) =>
-  store.substitueReducers(reducerCombo1);
+  store.substitueReducers(reducerCombo2);
 
 const callbackOnUnmount: CallbackOnStore = async (store) =>
   store.removeReducers(['count']);
 
-const CountDivWrap = () => (
+const TextDivWrap = () => (
   <DynamicStoreWrap
     callbackOnMount={callbackOnMount}
     callbackOnUnmount={callbackOnUnmount}
   >
-    <CountDiv />
+    <TextDiv />
   </DynamicStoreWrap>
 );
 
-export default CountDivWrap;
+export default TextDivWrap;

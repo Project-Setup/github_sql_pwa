@@ -1,5 +1,5 @@
-import { RootState } from '../../stores';
+import { GlobalCountState } from './countSlice';
 
-export const selectFirstCount = (state: RootState) => state.count[0];
+export const selectFirstCount = (state: GlobalCountState) => state.count[0];
 
-export const selectSecondCount = (state: RootState) => state.count[1];
+export const selectSecondCount = (state: GlobalCountState) => state.count[1];

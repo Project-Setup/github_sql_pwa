@@ -16,4 +16,10 @@ const countSlice = createSlice({
 
 export default countSlice.reducer;
 
+export type CountState = ReturnType<typeof countSlice['reducer']>;
+
+export interface GlobalCountState {
+  count: CountState;
+}
+
 export const { incrementFirst, incrementSecond } = countSlice.actions;
