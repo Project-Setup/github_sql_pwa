@@ -14,7 +14,7 @@ module.exports = () =>
     pwa: {
       disable: !isProd,
       scope: `${envMapping.LINK_PREFIX}/`,
-      sw: `${envMapping.LINK_PREFIX}/sw.js`,
+      // sw: `${envMapping.LINK_PREFIX}/sw.js`,
       dest: 'public',
       navigationPreload: true,
       modifyURLPrefix: {
