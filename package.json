@@ -1,7 +1,7 @@
 {
-  "name": "nextjs_redux_toolkit",
+  "name": "github_pwa",
   "version": "1.0.0",
-  "description": "Example Project Setup with NextJs, Redux-Toolkit, Typescript, Eslint, Jest and Emotion.",
+  "description": "PWA Github page project with NextJs, Redux-Toolkit, EmotionJs, Typescript, etc.",
   "main": "index.js",
   "scripts": {
     "dev": "next",
@@ -15,15 +15,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Project-Setup/nextjs_redux_toolkit.git"
+    "url": "git+https://github.com/Project-Setup/github_pwa.git"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Project-Setup/nextjs_redux_toolkit/issues"
+    "url": "https://github.com/Project-Setup/github_pwa/issues"
   },
-  "homepage": "https://github.com/Project-Setup/nextjs_redux_toolkit#readme",
+  "homepage": "https://github.com/Project-Setup/github_pwa#readme",
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@reduxjs/toolkit": "^1.3.4",
