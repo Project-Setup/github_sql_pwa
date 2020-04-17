@@ -413,19 +413,6 @@
 2. either use `next-redux-wrapper` package (`npm i -P next-redux-wrapper`) or copy the `withRedux.tsx` from the example setup `src/utils/redux`
 3. create custom `makeStore` function, `_app.tsx` page and other redux setup as examples in `next-redux-wrapper` repo shows
 
-## Deprecated
-**Go to different branches for different Project Setup**
-- `pwa-amp` -- with Amp, Redux-Saga, Emotion
-- `redux-saga` -- with Redux-Saga, Emotion
-- `redux-code-splitting` -- with Redux, Emotion
-- `emotion` -- with Emotion
-- `styled-jsx` -- with built-in Styled-JSX
-
-This is an example project setup.
-Packages used for all branches:
-* NextJs
-* Typescript
-* Eslint, Prettier
-* Jest, Enzyme
-* Next-Offline
-* Next-Manifest
+#### [code splitting](https://manukyan.dev/posts/2019-04-15-code-splitting-for-redux-and-optional-redux-saga/)
+1. copy `configureStore.ts`, `DynamicStoreWrap.tsx` from the example setup `src/utils/redux`, and `objectAssign.ts` from `src/utils/common`
+2. change `src/_app.tsx` similar to the example setup
