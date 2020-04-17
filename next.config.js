@@ -15,12 +15,10 @@ module.exports = () =>
 
     pwa: {
       disable: !isProd,
-      scope: `${LINK_PREFIX}/`,
-      sw: `${LINK_PREFIX}/sw.js`,
+      cdnPrefix: LINK_PREFIX,
       dest: 'public',
-      swDest: path.join(__dirname, `/public/sw.js`),
       navigationPreload: true,
-      // globPatterns: ['app/static/**/*'],
+      // globPatterns: ['app/static/**/*', 'app/_next/static/**/*'],
       // modifyURLPrefix: {
       //   app: LINK_PREFIX,
       // },
