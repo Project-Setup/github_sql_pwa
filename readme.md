@@ -420,3 +420,10 @@
 #### [code splitting](https://manukyan.dev/posts/2019-04-15-code-splitting-for-redux-and-optional-redux-saga/)
 1. copy `configureStore.ts`, `DynamicStoreWrap.tsx` from the example setup `src/utils/redux`, and `objectAssign.ts` from `src/utils/common`
 2. change `src/_app.tsx` similar to the example setup
+
+### [PWA](https://github.com/shadowwalker/next-pwa#readme)
+1.
+    ```sh
+    npm i -S next-pwa
+    ```
+2. 
