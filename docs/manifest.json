@@ -1,0 +1,21 @@
+{
+  "name": "github_pwa",
+  "short_name": "github_pwa",
+  "display": "standalone",
+  "orientation": "natural",
+  "theme_color": "#FFFFFF",
+  "background_color": "#FFFFFF",
+  "start_url": "/github_pwa/",
+  "icons": [
+    {
+      "src": "/github_pwa/icons/icon192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/github_pwa/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

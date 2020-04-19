@@ -426,4 +426,45 @@
     ```sh
     npm i -S next-pwa
     ```
-2. 
+2. change `next.config.js`
+    ```js
+      const isProd = process.env.NODE_ENV === 'production';
+
+      module.exports = () =>
+      withPWA({
+        // ...
+
+        pwa: {
+          disable: !isProd,
+          cdnPrefix: proces.env.LINK_PREFIX,
+          dest: 'public',
+          navigationPreload: true,
+        },
+      });
+    ```
+3. add `public/manifest.json`
+```json
+{
+  "name": "{appName}",
+  "short_name": "{appName}",
+  "display": "standalone",
+  "orientation": "natural",
+  "theme_color": "#FFFFFF",
+  "background_color": "#FFFFFF",
+  "start_url": "/{folderName}/",
+  "icons": [
+    {
+      "src": "/{}/icons/icon192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/{}/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+```
+4. add `public/icons` folder and include corresponding icon files in the folder
+
