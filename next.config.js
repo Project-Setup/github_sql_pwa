@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const withPWA = require('next-pwa');
-const defaultCache = require('next-pwa/cache');
+// const defaultCache = require('next-pwa/cache');
 const envMapping = require('./configs/env.mapping');
 
 const isProd = process.env.NODE_ENV === 'production';
@@ -15,7 +15,7 @@ module.exports = () =>
 
     pwa: {
       disable: !isProd,
-      cdnPrefix: LINK_PREFIX,
+      subdomainPrefix: LINK_PREFIX,
       dest: 'public',
       // runtimeCaching: [
       //   ...defaultCache,
