@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const withPWA = require('next-pwa');
-// const defaultCache = require('next-pwa/cache');
+const defaultCache = require('next-pwa/cache');
 const envMapping = require('./configs/env.mapping');
 
 const isProd = process.env.NODE_ENV === 'production';
@@ -29,7 +29,7 @@ module.exports = () =>
       dest: 'public',
       manifestTransforms: [encodeUriTransform],
       runtimeCaching: [
-        // ...defaultCache,
+        ...defaultCache,
         {
           urlPattern: /^https?.*/,
           handler: 'NetworkFirst',
