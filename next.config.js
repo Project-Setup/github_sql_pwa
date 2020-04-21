@@ -6,6 +6,16 @@ const envMapping = require('./configs/env.mapping');
 const isProd = process.env.NODE_ENV === 'production';
 const { LINK_PREFIX } = envMapping;
 
+// tranfrom precache url for browsers that encode dynamic routes
+// i.e. "[id].js" => "%5Bid%5D.js"
+const encodeUriTransform = async (manifestEntries) => {
+  const manifest = manifestEntries.map((entry) => {
+    entry.url = encodeURI(entry.url);
+    return entry;
+  });
+  return { manifest, warnings: [] };
+};
+
 module.exports = () =>
   withPWA({
     env: envMapping,
@@ -17,6 +27,7 @@ module.exports = () =>
       disable: !isProd,
       subdomainPrefix: LINK_PREFIX,
       dest: 'public',
+      manifestTransforms: [encodeUriTransform],
       // runtimeCaching: [
       //   ...defaultCache,
       //   {

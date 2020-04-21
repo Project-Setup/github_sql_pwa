@@ -431,6 +431,16 @@
     ```js
       const isProd = process.env.NODE_ENV === 'production';
 
+      // tranfrom precache url for browsers that encode dynamic routes
+      // i.e. "[id].js" => "%5Bid%5D.js"
+      const encodeUriTransform = async (manifestEntries) => {
+        const manifest = manifestEntries.map((entry) => {
+          entry.url = encodeURI(entry.url);
+          return entry;
+        });
+        return { manifest, warnings: [] };
+      };
+
       module.exports = () =>
       withPWA({
         // ...
