@@ -447,3 +447,8 @@
 4. add `public/icons` folder and include corresponding icon files in the folder
 5. copy `ManifestHead.tsx` from the example setup `src/features/head`
 6. import `ManifestHead` in pages
+
+### Notes:
+1. NextJs, next-pwa, workbox are still growing their api, so this project setup will be modified in the future for easier setup.
+2. There is a known error on the workbox: https://github.com/GoogleChrome/workbox/issues/2178.
+3. The `cdnPrefix` config is based on the unapproved pr https://github.com/shadowwalker/next-pwa/pull/31.
