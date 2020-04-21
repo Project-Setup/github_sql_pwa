@@ -13,7 +13,10 @@ const IndexPage: NextPage<Props> = ({ id, ...appProps }) => {
   const router = useRouter();
   return (
     <div>
-      <ManifestHead title="github_pwa dynamic-path" hrefCanonical="/" />
+      <ManifestHead
+        title="github_pwa dynamic-path"
+        hrefCanonical={`/index/${id}`}
+      />
       <p>{`Param: ${router?.isFallback ? 'Hold on' : id}`}</p>
       <p>{`Props from _app.tsx: ${JSON.stringify(appProps)}`}</p>
       <p>{`Page Process Env: ${process.env.TEST_PAGE_VAR}`}</p>
