@@ -462,3 +462,4 @@
 1. NextJs, next-pwa, workbox are still growing their api, so this project setup will be modified in the future for easier setup.
 2. There is a known error on the workbox: https://github.com/GoogleChrome/workbox/issues/2178.
 3. The `subdomainPrefix` config is based on the unapproved pr https://github.com/shadowwalker/next-pwa/pull/33.
+4. All indirect children in `next/head` will not be picked up at build time, so all `next/link` wrapped elements must be inserted after the `next/head` is loaded.
