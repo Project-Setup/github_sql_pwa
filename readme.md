@@ -442,29 +442,7 @@
         },
       });
     ```
-3. add `public/manifest.json`
-```json
-{
-  "name": "{appName}",
-  "short_name": "{appName}",
-  "display": "standalone",
-  "orientation": "natural",
-  "theme_color": "#FFFFFF",
-  "background_color": "#FFFFFF",
-  "start_url": "/{folderName}/",
-  "icons": [
-    {
-      "src": "/{}/icons/icon192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/{}/icons/icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
-}
-```
+3. add `public/manifest.json` similar to the one in the example setup
 4. add `public/icons` folder and include corresponding icon files in the folder
-
+5. copy `ManifestHead.tsx` from the example setup `src/features/head`
+6. import `ManifestHead` in pages
