@@ -437,7 +437,7 @@
 
         pwa: {
           disable: !isProd,
-          cdnPrefix: proces.env.LINK_PREFIX,
+          subdomainPrefix: proces.env.LINK_PREFIX,
           dest: 'public',
           navigationPreload: true,
         },
@@ -451,4 +451,4 @@
 ### Notes:
 1. NextJs, next-pwa, workbox are still growing their api, so this project setup will be modified in the future for easier setup.
 2. There is a known error on the workbox: https://github.com/GoogleChrome/workbox/issues/2178.
-3. The `cdnPrefix` config is based on the unapproved pr https://github.com/shadowwalker/next-pwa/pull/31.
+3. The `subdomainPrefix` config is based on the unapproved pr https://github.com/shadowwalker/next-pwa/pull/33.
