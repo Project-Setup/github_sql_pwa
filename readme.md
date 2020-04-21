@@ -342,7 +342,6 @@
     const prodAssetPrefix = '/{folder}';
     module.exports = () => ({
       env: {
-        ENV: process.env.NODE_ENV,
         LINK_PREFIX: isProd ? prodAssetPrefix : '';
       },
       assetPrefix: isProd ? prodAssetPrefix : '';,
@@ -352,14 +351,16 @@
     ```tsx
     import React from 'react';
     import Link from 'next/link';
+    import { join } from 'path';
 
     const linkPrefix = process.env.LINK_PREFIX;
 
-    const PrefixedLink: React.FC<Link['props']> = ({
+    const PrefixedLink: React.FC<PrefixedLinkProps> = ({
       href,
       as = href,
+      linkPrefix = LINK_PREFIX,
       ...props
-    }) => <Link href={href} as={`${linkPrefix}${as}`} {...props} />;
+    }) => <Link href={href} as={join(linkPrefix, as.toString())} {...props} />;
 
     export default PrefixedLink;
     ```

@@ -50,10 +50,6 @@ module.exports = () =>
         },
       ],
       navigationPreload: true,
-      // globPatterns: ['app/static/**/*', 'app/_next/static/**/*'],
-      // modifyURLPrefix: {
-      //   app: LINK_PREFIX,
-      // },
       // publicExcludes: [],
       // exclude: ['**/node_modules/**/*'],
     },
