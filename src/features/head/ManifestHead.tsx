@@ -27,7 +27,7 @@ type Props = PropsWithChildren<{
   isAmp?: string;
 }>;
 
-const Head: FC<Props> = ({
+const ManifestHead: FC<Props> = ({
   title = '',
   description = title,
   charset = 'utf-8',
@@ -143,4 +143,4 @@ const Head: FC<Props> = ({
   );
 };
 
-export default Head;
+export default ManifestHead;
