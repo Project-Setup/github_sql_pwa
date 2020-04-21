@@ -12783,7 +12783,7 @@ var rem = function rem(num) {
 
 /***/ }),
 
-/***/ 2:
+/***/ 1:
 /*!******************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2Fhome%2Fclfhhc%2Fsrc%2Fgithub_pwa%2Fsrc%2Fpages%2Findex.tsx ***!
   \******************************************************************************************************************************/
@@ -12806,5 +12806,5 @@ module.exports = dll_2adc2403d89adc16ead0;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map
