@@ -1,4 +1,4 @@
-# Example Github Page PWA with NextJs, code splitting Redux-Toolkit, Typescript, Eslint, Jest and Emotion.
+# Example Github Page PWA with NextJs, code splitting Redux-Toolkit, Sql.js, Typeorm, Typescript, Eslint, Jest and Emotion.
 
 ## Versions
 * NextJs v9.3.4
