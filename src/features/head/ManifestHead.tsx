@@ -1,7 +1,7 @@
-import React, { PropsWithChildren, FC, useEffect } from 'react';
+import React, { PropsWithChildren, FC } from 'react';
 import NextHead from 'next/head';
 import { join } from 'path';
-import Link from '../link/Link';
+// import Link from '../link/Link';
 
 /* eslint-disable prefer-destructuring */
 const LINK_PREFIX = process.env.LINK_PREFIX || '';
@@ -40,49 +40,49 @@ const ManifestHead: FC<Props> = ({
   refresh,
   appleIconPath = ICON_192_PATH,
   appleIconSize = '192x192',
-  isAmp = false,
+  isAmp,
   children,
 }) => {
-  const linkToAdd: Record<string, { [key in string]: string }> = {};
-  if (hrefManifest) {
-    linkToAdd.manifest = { href: join(linkPrefix, hrefManifest) };
-  }
-  if (!isAmp && hrefCanonical) {
-    linkToAdd.canonical = { href: join(linkPrefix, hrefCanonical) };
-  }
-  if (favIconPath) {
-    linkToAdd['shortcut icon'] = { href: join(linkPrefix, favIconPath) };
-  }
-  if (appleIconPath) {
-    linkToAdd['apple-touch-icon'] = {
-      href: join(linkPrefix, appleIconPath),
-      sizes: appleIconSize,
-    };
-  }
+  // const linkToAdd: Record<string, { [key in string]: string }> = {};
+  // if (hrefManifest) {
+  //   linkToAdd.manifest = { href: join(linkPrefix, hrefManifest) };
+  // }
+  // if (!isAmp && hrefCanonical) {
+  //   linkToAdd.canonical = { href: join(linkPrefix, hrefCanonical) };
+  // }
+  // if (favIconPath) {
+  //   linkToAdd['shortcut icon'] = { href: join(linkPrefix, favIconPath) };
+  // }
+  // if (appleIconPath) {
+  //   linkToAdd['apple-touch-icon'] = {
+  //     href: join(linkPrefix, appleIconPath),
+  //     sizes: appleIconSize,
+  //   };
+  // }
 
-  useEffect(() => {
-    const linkTags = Object.entries(linkToAdd).map(([rel, attrs]) => {
-      const tag = document.createElement('link');
-      tag.setAttribute('rel', rel);
-      Object.keys(attrs).forEach((attr) => {
-        tag.setAttribute(attr, attrs[attr]);
-      });
-      return tag;
-    });
-    const headElement = document.getElementsByTagName('head').item(0);
-    linkTags.forEach((tag) => {
-      if (headElement) {
-        headElement.appendChild(tag);
-      }
-    });
-    return () => {
-      linkTags.forEach((tag) => {
-        if (headElement) {
-          headElement.removeChild(tag);
-        }
-      });
-    };
-  }, []);
+  // useEffect(() => {
+  //   const linkTags = Object.entries(linkToAdd).map(([rel, attrs]) => {
+  //     const tag = document.createElement('link');
+  //     tag.setAttribute('rel', rel);
+  //     Object.keys(attrs).forEach((attr) => {
+  //       tag.setAttribute(attr, attrs[attr]);
+  //     });
+  //     return tag;
+  //   });
+  //   const headElement = document.getElementsByTagName('head').item(0);
+  //   linkTags.forEach((tag) => {
+  //     if (headElement) {
+  //       headElement.appendChild(tag);
+  //     }
+  //   });
+  //   return () => {
+  //     linkTags.forEach((tag) => {
+  //       if (headElement) {
+  //         headElement.removeChild(tag);
+  //       }
+  //     });
+  //   };
+  // }, []);
   return (
     <NextHead>
       <title key="title">{title}</title>
@@ -93,8 +93,17 @@ const ManifestHead: FC<Props> = ({
       )}
       <meta name="keywords" key="keywords" content={keywords} />
       <meta httpEquiv="X-UA-Compatible" key="ua-compatible" content="ie=edge" />
+      {!isAmp && hrefCanonical && (
+        <link rel="canonical" href={join(linkPrefix, hrefCanonical)} />
+      )}
+      {hrefManifest && (
+        <link rel="manifest" href={join(linkPrefix, hrefManifest)} />
+      )}
       {refresh && (
         <meta httpEquiv="refresh" key="refresh" content={`${refresh}`} />
+      )}
+      {favIconPath && (
+        <link rel="shortcut icon" href={join(linkPrefix, favIconPath)} />
       )}
 
       {/* for safari */}
@@ -114,13 +123,11 @@ const ManifestHead: FC<Props> = ({
         content="With Manifest"
       />
       {appleIconPath && appleIconSize && (
-        <Link href={appleIconPath} key="apple-touch-icon" passHref>
-          <link
-            rel="apple-touch-icon"
-            key="apple-touch-icon"
-            sizes={appleIconSize}
-          />
-        </Link>
+        <link
+          rel="apple-touch-icon"
+          sizes={appleIconSize}
+          href={join(linkPrefix, appleIconPath)}
+        />
       )}
 
       {/* for IE */}
