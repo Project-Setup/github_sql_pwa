@@ -4,11 +4,14 @@
 * NextJs v9.3.4
 * Redux-Toolkit v1.3.4
 * Emotion v10
+* Sql.js v1.2.2
+* Typeorm v0.2.24
 * Typescript v3.8.3
 
 ## Other Project Setup
 * **[[Nextjs_Ts_Eslint]](https://github.com/Project-Setup/Nextjs_Ts_Eslint)** NextJs, EmotionJs, Typescript
 * **[[nextjs_redux_toolkit]](https://github.com/Project-Setup/nextjs_redux_toolkit)** NextJs, Redux-Toolkit
+* **[[github_pwa]](https://github.com/Project-Setup/github_pwa)** Github page pwa setup with NextJs, code splitting Redux-Toolkit
 
 ## Usage of this example setup
 
@@ -54,12 +57,10 @@
       "scripts": {
         "dev": "next",
         "build": "next build",
-        "start": "next start",
-        "export": "NODE_ENV=production npm run build && next export -o docs && touch docs/.nojekyll"
+        "start": "next start"
       }
     }
     ```
-    (the export script is for github pages)
 
 ### [Typescript](https://github.com/zeit/next.js#typescript)
 
@@ -347,23 +348,7 @@
       assetPrefix: isProd ? prodAssetPrefix : '';,
     });
     ```
-2. change `as` prop in `next/Link` to add `linkPrefix`
-    ```tsx
-    import React from 'react';
-    import Link from 'next/link';
-    import { join } from 'path';
-
-    const linkPrefix = process.env.LINK_PREFIX;
-
-    const PrefixedLink: React.FC<PrefixedLinkProps> = ({
-      href,
-      as = href,
-      linkPrefix = LINK_PREFIX,
-      ...props
-    }) => <Link href={href} as={join(linkPrefix, as.toString())} {...props} />;
-
-    export default PrefixedLink;
-    ```
+2. change `as` prop in `next/Link` to add `linkPrefix`, similar to `src/features/link/Link.tsx` in the example setup
 3. change `scripts` in `package.json`
     ```json
     {
@@ -380,6 +365,18 @@
 1. 
     ```sh
     npm i -D @babel/plugin-proposal-nullish-coalescing-operator @babel/plugin-proposal-optional-chaining
+    ```
+2. add the plugins to `babel.config.js`
+    ```js
+    module.exports = {
+      presets: [
+        // ...
+      ],
+      plugins: [
+        '@babel/plugin-proposal-optional-chaining',
+        '@babel/plugin-proposal-nullish-coalescing-operator',
+      ],
+    };
     ```
 
 ### Dotenv
@@ -512,8 +509,8 @@
     const webpack = require('webpack');
     // ...
     module.exports = () => 
-      // ... other wrappers, like withPWA()
-      // add withTM wrap innermost
+      /* ... other wrappers, like withPWA()
+      add withTM wrap innermost */
       withTM({
         webpack: (config, { isServer }) => {
           config.plugins.push(
@@ -532,6 +529,10 @@
         }
 
         // ...other existing configs
+        env: {
+          SQL_JS_VERSION: '1.2.2',
+          // or the current version of sql.js for sql-wasm.wasm retrieval
+        }
       })
     // ...
     ```

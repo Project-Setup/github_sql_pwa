@@ -12,10 +12,8 @@ export const defaultEntities = [Hello];
 
 // either copy the file sql-wasm.wasm from sql.js/dist
 // or define locateFile function to retrieve it from a cdn
-const locateFile = (filename: string) => {
-  const url = `https://cdnjs.cloudflare.com/ajax/libs/sql.js/${process.env.SQL_JS_VERSION}/dist/${filename}`;
-  return url;
-};
+const locateFile = (filename: string) =>
+  `https://cdnjs.cloudflare.com/ajax/libs/sql.js/${process.env.SQL_JS_VERSION}/dist/${filename}`;
 
 interface DbNameOption {
   name?: string;
