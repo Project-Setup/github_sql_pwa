@@ -2773,9 +2773,9 @@ var asPath = (0, _utils.getURL)();
 var pageLoader = new _pageLoader["default"](buildId, prefix);
 
 var register = function register(_ref) {
-  var _ref6 = _slicedToArray(_ref, 2),
-      r = _ref6[0],
-      f = _ref6[1];
+  var _ref2 = _slicedToArray(_ref, 2),
+      r = _ref2[0],
+      f = _ref2[1];
 
   return pageLoader.registerPage(r, f);
 };
@@ -2880,13 +2880,13 @@ var emitter = (0, _mitt["default"])();
 exports.emitter = emitter;
 
 var _default = function _default(_temp) {
-  var _ref7, passedWebpackHMR, _await$pageLoader$loa, app, mod, initialErr, _await$pageLoader$loa2, _require, isValidElementType, renderCtx;
+  var _ref, passedWebpackHMR, _await$pageLoader$loa, app, mod, initialErr, _await$pageLoader$loa2, _require, isValidElementType, renderCtx;
 
   return _regeneratorRuntime.async(function _default$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          _ref7 = _temp === void 0 ? {} : _temp, passedWebpackHMR = _ref7.webpackHMR; // This makes sure this specific lines are removed in production
+          _ref = _temp === void 0 ? {} : _temp, passedWebpackHMR = _ref.webpackHMR; // This makes sure this specific lines are removed in production
 
           if (true) {
             webpackHMR = passedWebpackHMR;
@@ -3532,12 +3532,12 @@ var PageLoader = /*#__PURE__*/function () {
         return _this2.assetPrefix + "/_next/data/" + _this2.buildId + (path === '/' ? '/index' : path) + ".json";
       };
 
-      var _ref2 = (0, _url.parse)(href, true),
-          hrefPathname = _ref2.pathname,
-          query = _ref2.query;
+      var _ref = (0, _url.parse)(href, true),
+          hrefPathname = _ref.pathname,
+          query = _ref.query;
 
-      var _ref3 = (0, _url.parse)(asPath),
-          asPathname = _ref3.pathname;
+      var _ref2 = (0, _url.parse)(asPath),
+          asPathname = _ref2.pathname;
 
       var route = normalizeRoute(hrefPathname);
       var isDynamic = (0, _isDynamic.isDynamicRoute)(route),
@@ -3579,8 +3579,8 @@ var PageLoader = /*#__PURE__*/function () {
     value: function prefetchData(href, asPath) {
       var _this3 = this;
 
-      var _ref4 = (0, _url.parse)(href, true),
-          hrefPathname = _ref4.pathname;
+      var _ref3 = (0, _url.parse)(href, true),
+          hrefPathname = _ref3.pathname;
 
       var route = normalizeRoute(hrefPathname);
       return this.promisedSsgManifest.then(function (s, _dataHref) {
