@@ -10,7 +10,6 @@ const DbComponent: FC = () => {
 
   const handleButtonClick = async () => {
     await test();
-    console.log(1);
     setDbUrl(await createDbUrl({}));
   };
 
