@@ -43,46 +43,6 @@ const ManifestHead: FC<Props> = ({
   isAmp,
   children,
 }) => {
-  // const linkToAdd: Record<string, { [key in string]: string }> = {};
-  // if (hrefManifest) {
-  //   linkToAdd.manifest = { href: join(linkPrefix, hrefManifest) };
-  // }
-  // if (!isAmp && hrefCanonical) {
-  //   linkToAdd.canonical = { href: join(linkPrefix, hrefCanonical) };
-  // }
-  // if (favIconPath) {
-  //   linkToAdd['shortcut icon'] = { href: join(linkPrefix, favIconPath) };
-  // }
-  // if (appleIconPath) {
-  //   linkToAdd['apple-touch-icon'] = {
-  //     href: join(linkPrefix, appleIconPath),
-  //     sizes: appleIconSize,
-  //   };
-  // }
-
-  // useEffect(() => {
-  //   const linkTags = Object.entries(linkToAdd).map(([rel, attrs]) => {
-  //     const tag = document.createElement('link');
-  //     tag.setAttribute('rel', rel);
-  //     Object.keys(attrs).forEach((attr) => {
-  //       tag.setAttribute(attr, attrs[attr]);
-  //     });
-  //     return tag;
-  //   });
-  //   const headElement = document.getElementsByTagName('head').item(0);
-  //   linkTags.forEach((tag) => {
-  //     if (headElement) {
-  //       headElement.appendChild(tag);
-  //     }
-  //   });
-  //   return () => {
-  //     linkTags.forEach((tag) => {
-  //       if (headElement) {
-  //         headElement.removeChild(tag);
-  //       }
-  //     });
-  //   };
-  // }, []);
   return (
     <NextHead>
       <title key="title">{title}</title>
