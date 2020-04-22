@@ -458,6 +458,86 @@
 5. copy `ManifestHead.tsx` from the example setup `src/features/head`
 6. import `ManifestHead` in pages
 
+### [Typeorm and Sql.js](https://typeorm.io/#/)
+1.
+    ```sh
+    npm i -S typeorm reflect-metadata sql.js localforage next-transpile-modules
+    npm i -D webpack babel-plugin-transform-typescript-metadata @babel/plugin-proposal-decorators @babel/plugin-proposal-class-properties
+    ```
+2. add to `compilerOptions` in `tsconfig.json`
+    ```json
+    {
+      "compilerOptions": {
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+      }
+    }
+    ```
+3. add to the `plugins` in `babel.config.js`
+```js
+// ...
+  plugins: [
+    'babel-plugin-transform-typescript-metadata',
+    ['@babel/plugin-proposal-decorators', { legacy: true }],
+    ['@babel/plugin-proposal-class-properties', { loose: true }],
+    // ...
+  ]
+// ...
+```
+4. add to the top of `_app.tsx` or whatever the entry file
+    ```tsx
+    import 'reflect-metadata';
+    import localforage from 'localforage';
+    // ...
+    declare global {
+      interface Window {
+        localforage?: LocalForage;
+      }
+    }
+
+    // ... 
+    // ...inside the App
+      useEffect(() => {
+        window.localforage = localforage;
+        return () => {
+          window.localforage = undefined;
+        };
+      }, []);
+    // ...
+    ```
+5. add to `next.config.js`
+    ```js
+    // ...
+    const withTM = require('next-transpile-modules')(['typeorm/browser']);
+    const webpack = require('webpack');
+    // ...
+    module.exports = () => 
+      // ... other wrappers, like withPWA()
+      // add withTM wrap innermost
+      withTM({
+        webpack: (config, { isServer }) => {
+          config.plugins.push(
+              new webpack.ProvidePlugin({
+                'window.SQL': 'sql.js/dist/sql-wasm.js',
+              })
+            );
+            if (!isServer) {
+              config.node = {
+                fs: 'empty',
+                net: 'empty',
+                tls: 'empty',
+              };
+            }
+            return config;
+        }
+
+        // ...other existing configs
+      })
+    // ...
+    ```
+6. copy `connection.ts` from `src/sql/connection` in the example setup and modify the `defaultEntities`
+
+
 ### Notes:
 1. NextJs, next-pwa, workbox are still growing their api, so this project setup will be modified in the future for easier setup.
 2. There is a known error on the workbox: https://github.com/GoogleChrome/workbox/issues/2178.

@@ -3,6 +3,7 @@ const path = require('path');
 require('dotenv').config({
   path: path.join(__dirname, `../.env/${process.env.NODE_ENV}.env`),
 });
+const packageLockJson = require('../package-lock.json');
 
 // env mapping for exposure to client
 module.exports = {
@@ -14,4 +15,5 @@ module.exports = {
   MANIEFST_PATH: process.env.MANIEFST_PATH,
   ICON_192_PATH: process.env.ICON_192_PATH,
   FAV_ICON_PATH: process.env.FAV_ICON_PATH,
+  SQL_JS_VERSION: packageLockJson.dependencies['sql.js'].version,
 };

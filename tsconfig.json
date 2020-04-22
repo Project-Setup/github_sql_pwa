@@ -24,7 +24,9 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "esnext",
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
   },
   "exclude": [
     "node_modules",
