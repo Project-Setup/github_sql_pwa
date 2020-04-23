@@ -81,11 +81,10 @@ function serveStore<S>({
 
 function withRedux<S = Store>({
   makeStore,
-  config: opitonalConfig = {},
+  ...opitonalConfig
 }: {
   makeStore: MakeStore<S>;
-  config?: Partial<WithReduxConfig>;
-}) {
+} & Partial<WithReduxConfig>) {
   const config: WithReduxConfig = {
     ...defaultConfig,
     ...opitonalConfig,

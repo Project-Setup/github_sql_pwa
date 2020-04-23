@@ -5,13 +5,15 @@ require('dotenv').config({
 });
 const { dependencies } = require('../package-lock.json');
 
+const FOLDER = process.env.FOLDER || '';
+
 // env mapping for exposure to client
 module.exports = {
   TEST_CLIENT: process.env.test,
   TEST_PAGE_VAR: process.env.TEST_PAGE_VAR,
   ENV: process.env.NODE_ENV,
-  FOLDER: process.env.FOLDER || '',
-  LINK_PREFIX: `/${process.env.FOLDER}` || '',
+  FOLDER,
+  LINK_PREFIX: FOLDER && `/${FOLDER}`,
   THEME_COLOR: process.env.THEME_COLOR || '',
   MANIEFST_PATH: process.env.MANIEFST_PATH || '',
   ICON_192_PATH: process.env.ICON_192_PATH || '',
