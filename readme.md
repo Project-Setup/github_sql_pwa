@@ -439,21 +439,50 @@
       };
 
       module.exports = () =>
-      withPWA({
-        // ...
+      withManifest(
+        withPWA({
+          // ...
 
-        pwa: {
-          disable: !isProd,
-          subdomainPrefix: proces.env.LINK_PREFIX,
-          dest: 'public',
-          navigationPreload: true,
-        },
-      });
+          // service worker
+          pwa: {
+            disable: !isProd,
+            subdomainPrefix: proces.env.LINK_PREFIX,
+            dest: 'public',
+            navigationPreload: true,
+          },
+        
+
+        // manifest
+          manifest: {
+            /* eslint-disable @typescript-eslint/camelcase */
+            output: 'public',
+            short_name: FOLDER,
+            name: FOLDER,
+            start_url: `${LINK_PREFIX}/`,
+            background_color: THEME_COLOR,
+            display: 'standalone',
+            scope: `${LINK_PREFIX}/`,
+            dir: 'ltr', // text direction: left to right
+            theme_color: THEME_COLOR,
+            icons: [
+              {
+                src: `${LINK_PREFIX}${ICON_192_PATH}`,
+                sizes: '192x192',
+                type: 'image/png',
+              },
+              {
+                src: `${LINK_PREFIX}${ICON_512_PATH}`,
+                sizes: '512x512',
+                type: 'image/png',
+              },
+            ],
+          },
+        })
+      );
     ```
-3. add `public/manifest.json` similar to the one in the example setup
-4. add `public/icons` folder and include corresponding icon files in the folder
-5. copy `ManifestHead.tsx` from the example setup `src/features/head`
-6. import `ManifestHead` in pages
+3. add `public/icons` folder and include corresponding icon files in the folder
+4. copy `ManifestHead.tsx` from the example setup `src/features/head`
+5. import `ManifestHead` in pages
 
 ### [Typeorm and Sql.js](https://typeorm.io/#/)
 1.
