@@ -21,19 +21,30 @@ interface DbNameOption {
 
 interface DbConnectionOption extends DbNameOption {
   entities?: (Function | string | EntitySchema<any>)[];
+  shouldDrop?: boolean;
+  shouldClear?: boolean;
 }
 
-interface DbLoadingOption extends DbConnectionOption {
+interface DbLoadingOption extends DbNameOption {
+  entities?: (Function | string | EntitySchema<any>)[];
   database: Uint8Array;
 }
 
 export const connectDb = async ({
   name = defaultConnectionName,
   entities = defaultEntities,
+  shouldDrop = false,
+  shouldClear = false,
 }: DbConnectionOption) => {
   let connection: Connection;
+  if (shouldClear) {
+    await window.localforage?.removeItem(name);
+  }
   try {
     connection = getConnection(name);
+    if (!connection.isConnected) {
+      await connection.connect();
+    }
   } catch (error) {
     connection = getConnectionManager().create({
       type: 'sqljs',
@@ -45,9 +56,11 @@ export const connectDb = async ({
       useLocalForage: true,
       logging: !isProd && ['query', 'schema'],
     });
-  }
-  if (!connection.isConnected) {
-    await connection.connect();
+
+    if (!connection.isConnected) {
+      await connection.connect();
+    }
+    await connection.synchronize(shouldDrop);
   }
   return connection;
 };
@@ -77,7 +90,7 @@ export const loadDbFromFile = async ({
 export const createDbUrl = async ({
   name = defaultConnectionName,
 }: DbNameOption) => {
-  const connection = getConnection(name);
+  const connection = await connectDb({ name });
   const arrayBuffer = connection.sqljsManager.exportDatabase();
   const blob = new Blob([arrayBuffer], {
     type: 'application/octet-stream',
