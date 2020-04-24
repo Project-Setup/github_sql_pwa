@@ -6,3 +6,7 @@ public/build/*
 *.log
 .env
 out/
+public/workbox-*.js
+public/sw.js
+public/work-*.js
+public/manifest.json
