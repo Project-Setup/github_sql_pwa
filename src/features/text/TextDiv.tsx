@@ -64,7 +64,7 @@ const TextDiv: FC = () => {
 };
 
 const callbackOnMount: CallbackOnStore = async (store) =>
-  store.substitueReducers(reducerCombo2);
+  store.injectReducers(reducerCombo2);
 
 const callbackOnUnmount: CallbackOnStore = async (store) =>
   store.removeReducers(['count']);
