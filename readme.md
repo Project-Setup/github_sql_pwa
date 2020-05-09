@@ -13,8 +13,8 @@
 
 
 ## Versions
-* NextJs v9.3.4
-* Redux-Toolkit v1.3.4
+* NextJs v9.3.6
+* Redux-Toolkit v1.3.5
 * Emotion v10
 * Sql.js v1.2.2
 * Typeorm v0.2.24
@@ -587,5 +587,4 @@
 ### Notes:
 1. NextJs, next-pwa, workbox are still growing their api, so this project setup will be modified in the future for easier setup.
 2. There is a known error on the workbox: https://github.com/GoogleChrome/workbox/issues/2178.
-3. The `subdomainPrefix` config is based on the unapproved pr https://github.com/shadowwalker/next-pwa/pull/33.
-4. Only direct children in `next/head` will be picked up at build time, so all `next/link` wrapped elements must be inserted (useEffect) after the `next/head` is loaded.
+3. Only direct children in `next/head` will be picked up at build time, so all `next/link` wrapped elements must be inserted (useEffect) after the `next/head` is loaded.
