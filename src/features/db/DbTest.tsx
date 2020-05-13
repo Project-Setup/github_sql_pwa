@@ -1,9 +1,9 @@
 import React, { FC, ChangeEvent, useState } from 'react';
-import test from '../../sql/test';
-import { createDbUrl, loadDbFromFile } from '../../sql/connection/connection';
-import readAsArrayBuffer from '../../utils/common/readAsArrayBuffer';
-import instanceOfArrayBuffer from '../../utils/common/instanceOfArrayBuffer';
-import Hello from '../../sql/entities/Hello';
+import test from 'sql/test';
+import { createDbUrl, loadDbFromFile } from 'sql/connection/connection';
+import readAsArrayBuffer from 'utils/common/readAsArrayBuffer';
+import instanceOfArrayBuffer from 'utils/common/instanceOfArrayBuffer';
+import Hello from 'sql/entities/Hello';
 
 const DbComponent: FC = () => {
   const [dbUrl, setDbUrl] = useState('');

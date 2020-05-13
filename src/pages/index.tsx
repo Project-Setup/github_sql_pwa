@@ -1,8 +1,8 @@
 import React from 'react';
 import { NextPage } from 'next';
-import CountDiv from '../features/count/CountDiv';
-import ManifestHead from '../features/head/ManifestHead';
-import Link from '../features/link/Link';
+import CountDiv from 'features/count/CountDiv';
+import ManifestHead from 'features/head/ManifestHead';
+import Link from 'features/link/Link';
 
 const IndexPage: NextPage<{ [key in string]?: string }> = ({ ...appProps }) => (
   <div>

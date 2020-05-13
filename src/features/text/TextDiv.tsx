@@ -1,14 +1,14 @@
 import React, { FC, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { css } from '@emotion/core';
-import { updateFirst, updateSecond } from './textSlice';
-import { AppDispatch } from '../../stores';
-import { selectFirstText, selectSecondText } from './textSelectors';
-import rem from '../../utils/style/rem';
+import { AppDispatch } from 'stores';
+import rem from 'utils/style/rem';
 import DynamicStoreWrap, {
   CallbackOnStore,
-} from '../../utils/redux/DynamicStoreWrap';
-import { reducerCombo2 } from '../../reducers/reducerCombo';
+} from 'utils/redux/DynamicStoreWrap';
+import { reducerCombo2 } from 'reducers/reducerCombo';
+import { selectFirstText, selectSecondText } from './textSelectors';
+import { updateFirst, updateSecond } from './textSlice';
 
 const strDivStyles = css`
   display: flex;

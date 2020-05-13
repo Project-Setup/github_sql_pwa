@@ -1,9 +1,9 @@
 import React from 'react';
 import { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import { useRouter } from 'next/router';
-import TextDiv from '../../features/text/TextDiv';
-import ManifestHead from '../../features/head/ManifestHead';
-import Link from '../../features/link/Link';
+import TextDiv from 'features/text/TextDiv';
+import ManifestHead from 'features/head/ManifestHead';
+import Link from 'features/link/Link';
 
 export interface Props {
   id?: string;

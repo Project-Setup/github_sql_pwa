@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import { act } from 'react-dom/test-utils';
-import Page, { getStaticProps } from '../../../pages/index/[id]';
+import Page, { getStaticProps } from 'pages/index/[id]';
 
 describe('Page', () => {
   const testProp = {

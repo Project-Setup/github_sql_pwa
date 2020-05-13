@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
-import IndexPage from '../../pages/index';
+import IndexPage from 'pages/index';
 
 describe('IndexPage', () => {
   const testProp = {

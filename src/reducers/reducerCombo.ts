@@ -1,5 +1,5 @@
-import count from '../features/count/countSlice';
-import text from '../features/text/textSlice';
+import count from 'features/count/countSlice';
+import text from 'features/text/textSlice';
 
 export const commonReducer = {};
 

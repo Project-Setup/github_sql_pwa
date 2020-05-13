@@ -1,14 +1,14 @@
 import React, { FC, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { css } from '@emotion/core';
-import { incrementFirst, incrementSecond } from './countSlice';
-import { AppDispatch } from '../../stores';
-import { selectFirstCount, selectSecondCount } from './countSelectors';
-import rem from '../../utils/style/rem';
+import { AppDispatch } from 'stores';
+import rem from 'utils/style/rem';
 import DynamicStoreWrap, {
   CallbackOnStore,
-} from '../../utils/redux/DynamicStoreWrap';
-import { reducerCombo1 } from '../../reducers/reducerCombo';
+} from 'utils/redux/DynamicStoreWrap';
+import { reducerCombo1 } from 'reducers/reducerCombo';
+import { selectFirstCount, selectSecondCount } from './countSelectors';
+import { incrementFirst, incrementSecond } from './countSlice';
 
 const numDivStyles = css`
   display: flex;

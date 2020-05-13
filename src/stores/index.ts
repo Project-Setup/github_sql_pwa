@@ -1,6 +1,6 @@
-import { MakeStoreArg } from '../utils/redux/withRedux';
-import configureStore from '../utils/redux/configureStore';
-import { commonReducer } from '../reducers/reducerCombo';
+import { MakeStoreArg } from 'utils/redux/withRedux';
+import configureStore from 'utils/redux/configureStore';
+import { commonReducer } from 'reducers/reducerCombo';
 
 const makeStore = ({ preloadedState }: MakeStoreArg<any>) => {
   return configureStore({
