@@ -5,7 +5,7 @@ import ManifestHead from 'features/head/ManifestHead';
 import Link from 'features/link/Link';
 
 const IndexPage: NextPage<{ [key in string]?: string }> = ({ ...appProps }) => (
-  <div>
+  <main>
     <ManifestHead title="github_pwa static-path" hrefCanonical="/" />
     <p>{`Props from _app.tsx: ${JSON.stringify(appProps)}`}</p>
     <p>{`page process env: ${process.env.TEST_PAGE_VAR}`}</p>
@@ -13,7 +13,7 @@ const IndexPage: NextPage<{ [key in string]?: string }> = ({ ...appProps }) => (
     <Link href="/index/1">
       <a>index/1</a>
     </Link>
-  </div>
+  </main>
 );
 
 export default IndexPage;

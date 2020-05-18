@@ -17,7 +17,8 @@ const strDivStyles = css`
   & > * {
     margin: 0 ${rem(5)};
   }
-  & > input {
+  & label input {
+    margin-left: ${rem(5 * 2)};
     max-width: ${rem(50)};
     width: 100%;
     height: ${rem(15)};
@@ -34,26 +35,35 @@ const TextDiv: FC = () => {
   return (
     <div>
       <div css={strDivStyles}>
-        <input
-          type="text"
-          onChange={(e) => {
-            changeInput1(e.target.value);
-          }}
-          value={input1}
-        />
+        <label htmlFor="input1">
+          text1:
+          <input
+            type="text"
+            id="input1"
+            onChange={(e) => {
+              changeInput1(e.target.value);
+            }}
+            value={input1}
+          />
+        </label>
+
         <button type="button" onClick={() => dispatch(updateFirst(input1))}>
           change first text
         </button>
         <p>{text1}</p>
       </div>
       <div css={strDivStyles}>
-        <input
-          type="text"
-          onChange={(e) => {
-            changeInput2(e.target.value);
-          }}
-          value={input2}
-        />
+        <label htmlFor="input2">
+          text2:
+          <input
+            type="text"
+            id="input2"
+            onChange={(e) => {
+              changeInput2(e.target.value);
+            }}
+            value={input2}
+          />
+        </label>
         <button type="button" onClick={() => dispatch(updateSecond(input2))}>
           change second text
         </button>

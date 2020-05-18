@@ -12,7 +12,7 @@ export interface Props {
 const IndexPage: NextPage<Props> = ({ id, ...appProps }) => {
   const router = useRouter();
   return (
-    <div>
+    <main>
       <ManifestHead
         title="github_pwa dynamic-path"
         hrefCanonical={`/index/${id}`}
@@ -24,7 +24,7 @@ const IndexPage: NextPage<Props> = ({ id, ...appProps }) => {
       <Link href="/">
         <a>index</a>
       </Link>
-    </div>
+    </main>
   );
 };
 

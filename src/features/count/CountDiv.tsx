@@ -17,7 +17,8 @@ const numDivStyles = css`
   & > * {
     margin: 0 ${rem(5)};
   }
-  & > input {
+  & label input {
+    margin-left: ${rem(5 * 2)};
     max-width: ${rem(50)};
     width: 100%;
     height: ${rem(15)};
@@ -34,26 +35,34 @@ const CountDiv: FC = () => {
   return (
     <div>
       <div css={numDivStyles}>
-        <input
-          type="number"
-          onChange={(e) => {
-            changeAdd1(parseInt(e.target.value, 10));
-          }}
-          value={add1}
-        />
+        <label htmlFor="add1">
+          number1:
+          <input
+            type="number"
+            id="add1"
+            onChange={(e) => {
+              changeAdd1(parseInt(e.target.value, 10));
+            }}
+            value={add1}
+          />
+        </label>
         <button type="button" onClick={() => dispatch(incrementFirst(add1))}>
           add first number
         </button>
         <p>{num1}</p>
       </div>
       <div css={numDivStyles}>
-        <input
-          type="number"
-          onChange={(e) => {
-            changeAdd2(parseInt(e.target.value, 10));
-          }}
-          value={add2}
-        />
+        <label htmlFor="add2">
+          number2:
+          <input
+            type="number"
+            id="add2"
+            onChange={(e) => {
+              changeAdd2(parseInt(e.target.value, 10));
+            }}
+            value={add2}
+          />
+        </label>
         <button type="button" onClick={() => dispatch(incrementSecond(add2))}>
           add second number
         </button>
