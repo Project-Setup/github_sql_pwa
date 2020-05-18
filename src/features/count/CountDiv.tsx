@@ -13,15 +13,21 @@ import { incrementFirst, incrementSecond } from './countSlice';
 const numDivStyles = css`
   display: flex;
   align-items: center;
-  margin: ${rem(5)};
+  margin: ${rem(10)};
   & > * {
-    margin: 0 ${rem(5)};
+    margin: 0 ${rem(10)};
+    font-size: ${rem(20)};
+  }
+  & > button {
+    padding: ${rem(12)} ${rem(16)};
   }
   & label input {
-    margin-left: ${rem(5 * 2)};
-    max-width: ${rem(50)};
+    margin-left: ${rem(10 * 2)};
+    max-width: ${rem(80)};
     width: 100%;
-    height: ${rem(15)};
+    height: 100%;
+    font-size: ${rem(20)};
+    padding: ${rem(6)} ${rem(8)};
   }
 `;
 
