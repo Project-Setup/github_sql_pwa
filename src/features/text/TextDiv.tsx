@@ -67,7 +67,7 @@ const callbackOnMount: CallbackOnStore = async (store) =>
   store.injectReducers(reducerCombo2);
 
 const callbackOnUnmount: CallbackOnStore = async (store) =>
-  store.removeReducers(['count']);
+  store.removeReducers(['text']);
 
 const TextDivWrap = () => (
   <DynamicStoreWrap

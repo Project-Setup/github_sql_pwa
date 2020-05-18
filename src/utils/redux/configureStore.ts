@@ -11,9 +11,8 @@ import {
 } from '@reduxjs/toolkit';
 import objectAssign from '../common/objectAssign';
 
-interface StoreReducerEnhanced<S = any, A extends Action<any> = AnyAction> {
-  commonReducer: ReducersMapObject<S, A>;
-  asyncReducer: ReducersMapObject<any, AnyAction>;
+interface StoreReducerEnhanced {
+  reducer: ReducersMapObject;
   addReducer: <S = any, A extends Action<any> = AnyAction>(
     key: string,
     addedReducer: Reducer<S, A>
@@ -22,7 +21,7 @@ interface StoreReducerEnhanced<S = any, A extends Action<any> = AnyAction> {
   injectReducers: <S = any, A extends Action<any> = AnyAction>(
     reducers: ReducersMapObject<S, A>
   ) => void;
-  substitueReducers: <S = any, A extends Action<any> = AnyAction>(
+  substituteReducers: <S = any, A extends Action<any> = AnyAction>(
     reducers: ReducersMapObject<S, A>
   ) => void;
 }
@@ -30,7 +29,7 @@ interface StoreReducerEnhanced<S = any, A extends Action<any> = AnyAction> {
 export interface ReducerEnhancedStore<
   S = any,
   A extends Action<any> = AnyAction
-> extends Store<S, A>, StoreReducerEnhanced<S, A> {}
+> extends Store<S, A>, StoreReducerEnhanced {}
 
 export interface ModifiedConfigureStoreOptions<
   S = any,
@@ -46,13 +45,11 @@ const modifiedConfigureStore = <S = any, A extends Action<any> = AnyAction>({
 }: ModifiedConfigureStoreOptions<S, A>) => {
   let keysToRemove: string[] = [];
 
-  const commonReducer = reducer;
-
   const createReducer = <
     S extends object = {},
     A extends Action<any> = AnyAction
   >(
-    reducerObj?: ReducersMapObject<S, A>
+    reducerObj: ReducersMapObject<S, A>
   ): Reducer<S, A> => (state = {} as S, action) => {
     let updatedState = state;
     if (keysToRemove.length > 0) {
@@ -62,53 +59,49 @@ const modifiedConfigureStore = <S = any, A extends Action<any> = AnyAction>({
       );
       keysToRemove = [];
     }
-    return combineReducers<S, A>({
-      ...commonReducer,
-      ...reducerObj,
-    })(updatedState, action);
+    return combineReducers<S, A>(reducerObj)(updatedState, action);
   };
 
   const store: ReducerEnhancedStore<S, A> = Object.assign(
     configureStore({ reducer, ...restConfig }),
     {
-      commonReducer,
-      asyncReducer: {},
+      reducer,
 
       addReducer: (key, addedReducer) => {
-        if (!key || store.asyncReducer[key]) {
+        if (!key || store.reducer[key]) {
           return;
         }
-        store.asyncReducer[key] = addedReducer as Reducer<any, AnyAction>;
-        store.replaceReducer(combineReducers(store.asyncReducer));
+        store.reducer[key] = addedReducer as Reducer<any, AnyAction>;
+        store.replaceReducer(createReducer(store.reducer));
       },
 
       removeReducers: (keys) => {
         keys.forEach((key) => {
-          if (!key || !store.asyncReducer[key]) {
+          if (!key || !store.reducer[key]) {
             return;
           }
           keysToRemove.push(key);
         });
-        store.asyncReducer = objectAssign(([k]) => !keysToRemove.includes(k))(
+        store.reducer = objectAssign(([k]) => !keysToRemove.includes(k))(
           {},
-          store.asyncReducer
+          store.reducer
         );
-        store.replaceReducer(createReducer(store.asyncReducer));
+        store.replaceReducer(createReducer(store.reducer));
       },
 
       injectReducers: (reducers) => {
-        objectAssign()(store.asyncReducer, reducers);
-        store.replaceReducer(createReducer(store.asyncReducer));
+        objectAssign()(store.reducer, reducers);
+        store.replaceReducer(createReducer(store.reducer));
       },
 
-      substitueReducers: (reducers) => {
+      substituteReducers: (reducers) => {
         keysToRemove.push(
-          ...Object.keys(store.asyncReducer).filter((k) => !(k in reducers))
+          ...Object.keys(store.reducer).filter((k) => !(k in reducers))
         );
-        store.asyncReducer = objectAssign()({}, reducers);
-        store.replaceReducer(createReducer(store.asyncReducer));
+        store.reducer = objectAssign()({}, reducers);
+        store.replaceReducer(createReducer(store.reducer));
       },
-    } as StoreReducerEnhanced<S, A>
+    } as StoreReducerEnhanced
   );
 
   return store;
