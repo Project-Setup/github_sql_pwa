@@ -10,7 +10,7 @@ const DbComponent: FC = () => {
 
   const handleButtonClick = async () => {
     await test();
-    setDbUrl(await createDbUrl({}));
+    setDbUrl(await createDbUrl());
   };
 
   const handleFileClick = async (e: ChangeEvent<HTMLInputElement>) => {

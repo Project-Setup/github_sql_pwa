@@ -5,8 +5,11 @@ coverage
 public/build/*
 *.log
 .env
+.env.*
+.env*.local
 out/
 public/workbox-*.js
 public/sw.js
 public/work-*.js
 public/manifest.json
+env

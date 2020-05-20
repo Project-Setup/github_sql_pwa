@@ -19,7 +19,7 @@ const IndexPage: NextPage<Props> = ({ id, ...appProps }) => {
       />
       <p>{`Param: ${router?.isFallback ? 'Hold on' : id}`}</p>
       <p>{`Props from _app.tsx: ${JSON.stringify(appProps)}`}</p>
-      <p>{`Page Process Env: ${process.env.TEST_PAGE_VAR}`}</p>
+      <p>{`Page Process Env: ${process.env.NEXT_PUBLIC_TEST_PAGE_VAR}`}</p>
       <TextDiv />
       <Link href="/">
         <a>index</a>

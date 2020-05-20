@@ -4,16 +4,15 @@ const withManifest = require('next-manifest');
 const withTM = require('next-transpile-modules')(['typeorm/browser']);
 const webpack = require('webpack');
 const defaultCache = require('next-pwa/cache');
-const envMapping = require('./configs/env.mapping');
+const { dependencies } = require('./package-lock.json');
 
 const isProd = process.env.NODE_ENV === 'production';
-const {
-  LINK_PREFIX,
-  FOLDER,
-  THEME_COLOR,
-  ICON_192_PATH,
-  ICON_512_PATH,
-} = envMapping;
+const LINK_PREFIX = process.env.NEXT_PUBLIC_LINK_PREFIX || '';
+const FOLDER = LINK_PREFIX && LINK_PREFIX.substring(1);
+const THEME_COLOR = process.env.NEXT_PUBLIC_THEME_COLOR;
+const ICON_192_PATH = process.env.NEXT_PUBLIC_ICON_192_PATH;
+const ICON_512_PATH = process.env.NEXT_PUBLIC_ICON_512_PATH;
+const { SHORT_NAME } = process.env;
 
 // tranfrom precache url for browsers that encode dynamic routes
 // i.e. "[id].js" => "%5Bid%5D.js"
@@ -46,7 +45,9 @@ module.exports = () =>
           return config;
         },
 
-        env: envMapping,
+        env: {
+          NEXT_PUBLIC_SQL_JS_VERSION: dependencies['sql.js'].version || '',
+        },
         target: 'serverless',
         poweredByHeader: false,
         assetPrefix: LINK_PREFIX,
@@ -98,7 +99,7 @@ module.exports = () =>
         manifest: {
           /* eslint-disable @typescript-eslint/camelcase */
           output: 'public',
-          short_name: FOLDER,
+          short_name: SHORT_NAME || FOLDER,
           name: FOLDER,
           start_url: `${LINK_PREFIX}/`,
           background_color: THEME_COLOR,

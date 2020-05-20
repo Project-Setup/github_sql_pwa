@@ -4,11 +4,11 @@ import { join } from 'path';
 // import Link from '../link/Link';
 
 /* eslint-disable prefer-destructuring */
-const LINK_PREFIX = process.env.LINK_PREFIX || '';
-const THEME_COLOR = process.env.THEME_COLOR;
-const MANIEFST_PATH = process.env.MANIEFST_PATH;
-const ICON_192_PATH = process.env.ICON_192_PATH;
-const FAV_ICON_PATH = process.env.FAV_ICON_PATH;
+const LINK_PREFIX = process.env.NEXT_PUBLIC_LINK_PREFIX || '';
+const THEME_COLOR = process.env.NEXT_PUBLIC_THEME_COLOR;
+const MANIEFST_PATH = process.env.NEXT_PUBLIC_MANIEFST_PATH;
+const ICON_192_PATH = process.env.NEXT_PUBLIC_ICON_192_PATH;
+const FAV_ICON_PATH = process.env.NEXT_PUBLIC_FAV_ICON_PATH;
 /* eslint-enable prefer-destructuring */
 
 type Props = PropsWithChildren<{

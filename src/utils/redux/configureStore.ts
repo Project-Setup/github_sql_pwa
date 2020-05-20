@@ -35,14 +35,14 @@ export interface ModifiedConfigureStoreOptions<
   S = any,
   A extends Action<any> = AnyAction,
   M extends ReadonlyArray<Middleware<{}, S>> = ReadonlyArray<Middleware<{}, S>>
-> extends ConfigureStoreOptions<S, A, M> {
-  reducer: ReducersMapObject<S, A>;
+> extends Omit<ConfigureStoreOptions<S, A, M>, 'reducer'> {
+  reducer?: ReducersMapObject<S, A>;
 }
 
 const modifiedConfigureStore = <S = any, A extends Action<any> = AnyAction>({
-  reducer,
+  reducer = {} as ReducersMapObject<S, A>,
   ...restConfig
-}: ModifiedConfigureStoreOptions<S, A>) => {
+}: ModifiedConfigureStoreOptions<S, A> = {}) => {
   let keysToRemove: string[] = [];
 
   const createReducer = <

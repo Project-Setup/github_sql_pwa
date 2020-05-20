@@ -1,8 +1,4 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const path = require('path');
-require('dotenv').config({
-  path: path.join(__dirname, `../.env/${process.env.NODE_ENV}.env`),
-});
 const { dependencies } = require('../package-lock.json');
 
 const FOLDER = process.env.FOLDER || '';

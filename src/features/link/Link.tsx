@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { join } from 'path';
 
-const LINK_PREFIX = process.env.LINK_PREFIX || '';
+const LINK_PREFIX = process.env.NEXT_PUBLIC_LINK_PREFIX || '';
 
 type PrefixedLinkProps = Link['props'] & {
   linkPrefix?: string;

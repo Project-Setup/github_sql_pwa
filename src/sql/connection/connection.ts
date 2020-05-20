@@ -12,14 +12,15 @@ export const defaultEntities = [Hello];
 
 // either copy the file sql-wasm.wasm from sql.js/dist
 // or define locateFile function to retrieve it from a cdn
-const locateFile = (filename: string) =>
-  `https://cdnjs.cloudflare.com/ajax/libs/sql.js/${process.env.SQL_JS_VERSION}/dist/${filename}`;
+const defaultLocateFile = (filename: string) =>
+  `https://cdnjs.cloudflare.com/ajax/libs/sql.js/${process.env.NEXT_PUBLIC_SQL_JS_VERSION}/dist/${filename}`;
 
 interface DbNameOption {
   name?: string;
 }
 
 interface DbConnectionOption extends DbNameOption {
+  locateFile?: string | ((filename: string) => string);
   entities?: (Function | string | EntitySchema<any>)[];
   shouldDrop?: boolean;
   shouldClear?: boolean;
@@ -32,10 +33,11 @@ interface DbLoadingOption extends DbNameOption {
 
 export const connectDb = async ({
   name = defaultConnectionName,
+  locateFile = defaultLocateFile,
   entities = defaultEntities,
   shouldDrop = false,
   shouldClear = false,
-}: DbConnectionOption) => {
+}: DbConnectionOption = {}) => {
   let connection: Connection;
   if (shouldClear) {
     await window.localforage?.removeItem(name);
@@ -89,7 +91,7 @@ export const loadDbFromFile = async ({
 
 export const createDbUrl = async ({
   name = defaultConnectionName,
-}: DbNameOption) => {
+}: DbNameOption = {}) => {
   const connection = await connectDb({ name });
   const arrayBuffer = connection.sqljsManager.exportDatabase();
   const blob = new Blob([arrayBuffer], {

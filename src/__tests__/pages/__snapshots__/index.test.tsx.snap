@@ -1,16 +1,90 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`IndexPage should render without throwing an error 1`] = `
-<IndexPage
-  test="test"
+<Provider
+  store={
+    Object {
+      "addReducer": [Function],
+      "dispatch": [Function],
+      "getState": [Function],
+      "injectReducers": [Function],
+      "reducer": Object {
+        "count": [Function],
+      },
+      "removeReducers": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      "substituteReducers": [Function],
+      Symbol(observable): [Function],
+    }
+  }
 >
-  <div>
-    <p>
-      Props from _app.tsx: {"test":"test"}
-    </p>
-    <p>
-      page process env: TEST_TEST_PAGE_PROP
-    </p>
-  </div>
-</IndexPage>
+  <IndexPage
+    test="test"
+  >
+    <main>
+      <ManifestHead
+        hrefCanonical="/"
+        title="github_pwa static-path"
+      >
+        <Head>
+          <Component
+            handleStateChange={null}
+            inAmpMode={false}
+            reduceComponentsToState={[Function]}
+          />
+        </Head>
+      </ManifestHead>
+      <p>
+        Props from _app.tsx: {"test":"test"}
+      </p>
+      <p>
+        page process env: TEST_TEST_PAGE_PROP
+      </p>
+      <CountDivWrap>
+        <DynamicStoreWrap
+          callbackOnMount={[Function]}
+          callbackOnUnmount={[Function]}
+        >
+          <DynamicStore
+            callbackOnMount={[Function]}
+            callbackOnUnmount={[Function]}
+            store={
+              Object {
+                "addReducer": [Function],
+                "dispatch": [Function],
+                "getState": [Function],
+                "injectReducers": [Function],
+                "reducer": Object {
+                  "count": [Function],
+                },
+                "removeReducers": [Function],
+                "replaceReducer": [Function],
+                "subscribe": [Function],
+                "substituteReducers": [Function],
+                Symbol(observable): [Function],
+              }
+            }
+          />
+        </DynamicStoreWrap>
+      </CountDivWrap>
+      <PrefixedLink
+        href="/index/1"
+      >
+        <Link
+          as="/index/1"
+          href="/index/1"
+        >
+          <a
+            href="/index/1"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            index/1
+          </a>
+        </Link>
+      </PrefixedLink>
+    </main>
+  </IndexPage>
+</Provider>
 `;
