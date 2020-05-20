@@ -6,7 +6,7 @@ import {
 } from 'typeorm/browser';
 import { Hello } from '../entities/Hello';
 
-const isProd = process.env.ENV === 'production';
+const isProd = process.env.NODE_ENV === 'production';
 const defaultConnectionName = 'sqlJsDb';
 export const defaultEntities = [Hello];
 

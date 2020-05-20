@@ -6,13 +6,15 @@ const webpack = require('webpack');
 const defaultCache = require('next-pwa/cache');
 const { dependencies } = require('./package-lock.json');
 
+/* eslint-disable prefer-destructuring */
 const isProd = process.env.NODE_ENV === 'production';
 const LINK_PREFIX = process.env.NEXT_PUBLIC_LINK_PREFIX || '';
 const FOLDER = LINK_PREFIX && LINK_PREFIX.substring(1);
 const THEME_COLOR = process.env.NEXT_PUBLIC_THEME_COLOR;
 const ICON_192_PATH = process.env.NEXT_PUBLIC_ICON_192_PATH;
 const ICON_512_PATH = process.env.NEXT_PUBLIC_ICON_512_PATH;
-const { SHORT_NAME } = process.env;
+const SHORT_NAME = process.env.SHORT_NAME || '';
+/* eslint-enable prefer-destructuring */
 
 // tranfrom precache url for browsers that encode dynamic routes
 // i.e. "[id].js" => "%5Bid%5D.js"
