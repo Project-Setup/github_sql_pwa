@@ -37,7 +37,7 @@
     "react-redux": "^7.2.0",
     "reflect-metadata": "^0.1.13",
     "sql.js": "^1.2.2",
-    "typeorm": "^0.2.24"
+    "typeorm": "^0.2.25"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.8.3",
@@ -47,13 +47,13 @@
     "@emotion/babel-preset-css-prop": "^10.0.27",
     "@types/enzyme": "^3.10.5",
     "@types/enzyme-adapter-react-16": "^1.0.6",
-    "@types/jest": "^25.2.1",
-    "@types/node": "^13.13.6",
+    "@types/jest": "^25.2.3",
+    "@types/node": "^13.13.8",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
-    "@types/react-redux": "^7.1.8",
-    "@typescript-eslint/eslint-plugin": "^2.33.0",
-    "@typescript-eslint/parser": "^2.33.0",
+    "@types/react-redux": "^7.1.9",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
     "babel-jest": "^25.5.1",
     "babel-plugin-transform-typescript-metadata": "^0.3.0",
     "enzyme": "^3.11.0",
@@ -72,7 +72,7 @@
     "jest": "^25.5.4",
     "jest-emotion": "^10.0.32",
     "prettier": "^2.0.5",
-    "typescript": "^3.9.2",
+    "typescript": "^3.9.3",
     "webpack": "^4.43.0"
   }
 }
