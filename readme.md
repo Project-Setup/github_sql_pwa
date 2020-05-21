@@ -13,7 +13,7 @@
 
 
 ## Versions
-* NextJs v9.4.1
+* NextJs v9.4.2
 * Redux-Toolkit v1.3.6
 * Emotion v10
 * Sql.js v1.2.2
