@@ -39,6 +39,6 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => ({
   paths: [{ params: { id: '1' } }],
-  fallback: true,
+  fallback: false,
 });
 export default IndexPage;
