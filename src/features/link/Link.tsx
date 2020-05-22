@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Link from 'next/link';
 import { join } from 'path';
 
@@ -8,7 +8,7 @@ type PrefixedLinkProps = Link['props'] & {
   linkPrefix?: string;
 };
 
-const PrefixedLink: React.FC<PrefixedLinkProps> = ({
+const PrefixedLink: FC<PrefixedLinkProps> = ({
   href,
   as = href,
   linkPrefix = LINK_PREFIX,
