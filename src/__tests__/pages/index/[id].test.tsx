@@ -1,19 +1,22 @@
 import React from 'react';
-import { mount, ReactWrapper } from 'enzyme';
+import { ReactWrapper } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import Page, { getStaticProps } from 'pages/index/[id]';
+import mountWithStore from '__tests__/common/mountWithStore';
 
 describe('Page', () => {
   const testProp = {
     test: 'test',
   };
+
   let TestPageWrapper: ReactWrapper;
-  beforeAll(() => {
-    act(() => {
+
+  beforeAll(async () => {
+    await act(async () => {
       /* eslint-disable-next-line react/jsx-props-no-spreading */
-      TestPageWrapper = mount(<Page id="testId" {...testProp} />);
+      TestPageWrapper = mountWithStore(<Page id="testId" {...testProp} />)();
     });
-    TestPageWrapper.update();
+    // TestPageWrapper.update();
   });
 
   it('should render without throwing an error', () => {
@@ -32,7 +35,7 @@ describe('Page', () => {
 
   it('should render page process env correctly', () => {
     expect(TestPageWrapper.find('p').at(2).text()).toContain(
-      process.env.TEST_PAGE_VAR
+      process.env.NEXT_PUBLIC_TEST_PAGE_VAR
     );
   });
 });

@@ -1,29 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { ReactChild } from 'react';
-import { mount, ReactWrapper } from 'enzyme';
-import { Provider } from 'react-redux';
-import configureStore, {
-  ModifiedConfigureStoreOptions,
-} from 'utils/redux/configureStore';
+import React from 'react';
+import { ReactWrapper } from 'enzyme';
 import IndexPage from 'pages/index';
 import { act } from 'react-dom/test-utils';
-
-const mountWithStore = (children: ReactChild) => ({
-  reducer = {},
-  devTools = false,
-  middleware,
-  preloadedState,
-  enhancers,
-}: ModifiedConfigureStoreOptions = {}) => {
-  const store = configureStore({
-    reducer,
-    devTools,
-    middleware,
-    preloadedState,
-    enhancers,
-  });
-  return mount(<Provider store={store}>{children}</Provider>);
-};
+import mountWithStore from '__tests__/common/mountWithStore';
 
 describe('IndexPage', () => {
   const testProp = {

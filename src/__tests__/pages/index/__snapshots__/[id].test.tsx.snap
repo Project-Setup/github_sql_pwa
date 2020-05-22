@@ -1,20 +1,94 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Page should render without throwing an error 1`] = `
-<IndexPage
-  id="testId"
-  test="test"
+<Provider
+  store={
+    Object {
+      "addReducer": [Function],
+      "dispatch": [Function],
+      "getState": [Function],
+      "injectReducers": [Function],
+      "reducer": Object {
+        "text": [Function],
+      },
+      "removeReducers": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      "substituteReducers": [Function],
+      Symbol(observable): [Function],
+    }
+  }
 >
-  <div>
-    <p>
-      Param: testId
-    </p>
-    <p>
-      Props from _app.tsx: {"test":"test"}
-    </p>
-    <p>
-      Page Process Env: TEST_TEST_PAGE_PROP
-    </p>
-  </div>
-</IndexPage>
+  <IndexPage
+    id="testId"
+    test="test"
+  >
+    <main>
+      <ManifestHead
+        hrefCanonical="/index/testId"
+        title="github_pwa dynamic-path"
+      >
+        <Head>
+          <Component
+            handleStateChange={null}
+            inAmpMode={false}
+            reduceComponentsToState={[Function]}
+          />
+        </Head>
+      </ManifestHead>
+      <p>
+        Param: testId
+      </p>
+      <p>
+        Props from _app.tsx: {"test":"test"}
+      </p>
+      <p>
+        Page Process Env: TEST_TEST_PAGE_PROP
+      </p>
+      <TextDivWrap>
+        <DynamicStoreWrap
+          callbackOnMount={[Function]}
+          callbackOnUnmount={[Function]}
+        >
+          <DynamicStore
+            callbackOnMount={[Function]}
+            callbackOnUnmount={[Function]}
+            store={
+              Object {
+                "addReducer": [Function],
+                "dispatch": [Function],
+                "getState": [Function],
+                "injectReducers": [Function],
+                "reducer": Object {
+                  "text": [Function],
+                },
+                "removeReducers": [Function],
+                "replaceReducer": [Function],
+                "subscribe": [Function],
+                "substituteReducers": [Function],
+                Symbol(observable): [Function],
+              }
+            }
+          />
+        </DynamicStoreWrap>
+      </TextDivWrap>
+      <PrefixedLink
+        href="/"
+      >
+        <Link
+          as="/"
+          href="/"
+        >
+          <a
+            href="/"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            index
+          </a>
+        </Link>
+      </PrefixedLink>
+    </main>
+  </IndexPage>
+</Provider>
 `;
