@@ -52,7 +52,6 @@ const TextDiv: FC = () => {
             value={input1}
           />
         </label>
-
         <button type="button" onClick={() => dispatch(updateFirst(input1))}>
           change first text
         </button>
